@@ -22,12 +22,19 @@ Je vous invite à regarder la vidéo de [Human Talks Paris](https://www.youtube.
 Quelques petites questions :
 
 - Résumer en une phrase l'intérêt de Material UI
+  Permet d'utiliser des composants prêt à l'utilisation avec une experience utilisateur cool
 - Comment importer `material-ui` dans un fichier ?
+  import Button from '@material-ui/core/Button';
 - Comment une application peut utiliser un thème à travers l'ensemble d'un projet ?
+  En encapsulant notre application dans un thème provider 
 - A quoi sert `createMuiTheme` ?
+  Permet de personnaliser une partie des composants importés par Material UI
 - A quoi correspond `palette` ?
+  Permet de modifier les couleurs en Material, palettes de couleurs utilisées par notre application
 - Comment re-définir des propriétés ?
+  Pour redefinir des propriétés on utilise overrides
 - A quoi vous fait penser `withStyle` ? Comment l'utiliser ?
+  Pour utiliser withStyle il faut déjà l'importer depuis Material UI puis fournir un fichier style lors de l'export. Cela ressemble à un   HOC
 - Reproduire les deux boutons rouge et bleu présentées dans la vidéo.
 
 
