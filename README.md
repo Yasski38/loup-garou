@@ -110,17 +110,40 @@ fn(['je suis blablablabla'])
 avec tagged templates
 fn`je suis blablablablabla`
 
-
-
-
-
-
-
 - Comment utilise-t-on les props dans cette librarie ?
+  On les utilise de cette manière, exemple pour un background color : background-color: ${props => props.disabled ? 'red' : 'green'};
 
 - Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.
+  
+  import React, {Component} from 'react';
+import styled from 'styled-components'
+
+
+class App extends Component {
+  render() {
+    return(
+      
+        <div>
+          <Button disabled={true}>Bleu</Button>
+          <Button>Rouge</Button>
+        </div>
+      
+      );
+  }
+}
+
+const Button = styled.button`
+  color:white;
+  
+  ${props => `
+  background-color : ${props.disabled ? 'blue' : 'red'};
+  `};
+  `
+  export default App;
+  
 - Quelles sont les fonctions du contexte de styled-components ?
 
+Le contexte de styled components permet la gestion de thèmes. On peut d'ailleurs surcharger des thèmes avec d'autres thème au sein même de notre application
 
 ## Mise en place du design
 
