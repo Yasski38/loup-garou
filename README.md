@@ -38,6 +38,61 @@ Quelques petites questions :
 - Reproduire les deux boutons rouge et bleu présentées dans la vidéo.
 
 
+import React, {Component}  from "react";
+import {
+  MuiThemeProvider,
+  createMuiTheme,
+  withStyles
+} from "@material-ui/core/styles";
+
+import blue from "@material-ui/core/colors/blue";
+import Button from "@material-ui/core/Button";
+
+class App extends Component {
+  render() {
+    return(
+      <MuiThemeProvider theme={theme}>
+        <div>
+          <Button className={this.props.classes.myLeftButton}>Bleu</Button>
+          <Button>Rouge</Button>
+        </div>
+      </MuiThemeProvider>
+      );
+  }
+}
+
+
+const styles = {
+  myLeftButton: {
+    backgroundColor: 'blue'
+  }
+};
+
+const theme = createMuiTheme({
+  palette: {
+    primary:blue
+  },
+  typography: {
+    fontSize:15,
+    fontFamily:"Arial"
+  },
+  overrides: {
+    MuiButton : {
+      root : {
+        backgroundColor: "red",
+        "&:hover": { backgroundColor : "yellow" }
+      }
+    }
+  }
+})
+
+
+
+
+export default withStyles(styles)(App);
+
+
+
 ## Styled Components
 
 De la même manière, voici une [vidéo](https://www.youtube.com/watch?v=mS0UKNBh-Ig) pour introduire le sujet.
