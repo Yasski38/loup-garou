@@ -37,14 +37,13 @@ Quelques petites questions :
   Pour utiliser withStyle il faut déjà l'importer depuis Material UI puis fournir un fichier style lors de l'export. Cela ressemble à un   HOC
 - Reproduire les deux boutons rouge et bleu présentées dans la vidéo.
 
-
+```javascript
 import React, {Component}  from "react";
 import {
   MuiThemeProvider,
   createMuiTheme,
   withStyles
-} from "@material-ui/core/styles";
-
+} from "@material-ui/core/styles" ;
 import blue from "@material-ui/core/colors/blue";
 import Button from "@material-ui/core/Button";
 
@@ -91,7 +90,7 @@ const theme = createMuiTheme({
 
 export default withStyles(styles)(App);
 
-
+```
 
 ## Styled Components
 
@@ -99,23 +98,27 @@ De la même manière, voici une [vidéo](https://www.youtube.com/watch?v=mS0UKNB
 
 Quelques petites questions :
 
-- Qu'est-ce que le CSS-in-JS ?
+ Qu'est-ce que le CSS-in-JS ?
 Faire de la CSS directement dans du JS
-- Qu'est-ce que sont les tagged templates (délimitées par des backticks) ?
+ Qu'est-ce que sont les tagged templates (délimitées par des backticks) ?
 Ils permettent de définir des règles d'interpolation de chaînes personnalisées pour pouvoir styliser nos composants
-- Donner un exemple d'un bouton personnalisé avec et sans les tagged templates ?
+ Donner un exemple d'un bouton personnalisé avec et sans les tagged templates ?
 
-sans tagged templates
+
+```javascript
+// sans tagged templates
 fn(['je suis blablablabla'])
-avec tagged templates
-fn`je suis blablablablabla`
 
-- Comment utilise-t-on les props dans cette librarie ?
+//avec tagged templates
+fn`je suis blablablablabla`
+```
+
+ Comment utilise-t-on les props dans cette librarie ?
   On les utilise de cette manière, exemple pour un background color : background-color: ${props => props.disabled ? 'red' : 'green'};
 
-- Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.
-  
-  import React, {Component} from 'react';
+ Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.
+```javascript
+import React, {Component} from 'react';
 import styled from 'styled-components'
 
 
@@ -141,7 +144,10 @@ const Button = styled.button`
   `
   export default App;
   
-- Quelles sont les fonctions du contexte de styled-components ?
+```
+  
+ Quelles sont les fonctions du contexte de styled-components ?
+
 
 Le contexte de styled components permet la gestion de thèmes. On peut d'ailleurs surcharger des thèmes avec d'autres thème au sein même de notre application
 Le contexte peut également servir à combiner les compo react classiques avec styled components
@@ -164,9 +170,9 @@ Activer l'authentification anonyme dans la console de Firebase.
 
 ### Découverte du code
 
-- Le code utilise des fonctions plutôt que des classes. Ecrire un bouton sous la forme d'une classe et d'une fonction. Retrouver les équivalences entre les méthodes des composants (telles que setState) et celles des fonctions ?
-
-Bouton sous la forme d'une fonction : 
+ Le code utilise des fonctions plutôt que des classes. Ecrire un bouton sous la forme d'une classe et d'une fonction. Retrouver les équivalences entre les méthodes des composants (telles que setState) et celles des fonctions ?
+```javascript
+// Bouton sous la forme d'une fonction : 
 
 const Person = props => (
   <div>
@@ -175,7 +181,8 @@ const Person = props => (
 );
 
 
-Bouton sous la forme d'une classe :
+
+// Bouton sous la forme d'une classe :
 
 class Person extends Component {
   constructor(props){
@@ -194,19 +201,19 @@ class Person extends Component {
   }
 }
 export default Person;
+```
 
 
-
-- Comment récupérer les props dans une fonction ?
-
+ Comment récupérer les props dans une fonction ?
+```
 const blablabla = (props) => {
+```
 
-
-- Dans `App.js`, identifier les différents producteurs de données. Retrouver leur définition. Quelles données partagent-ils à l'ensemble de l'application ?
+ Dans `App.js`, identifier les différents producteurs de données. Retrouver leur définition. Quelles données partagent-ils à l'ensemble de l'application ?
 
 Les différents producteurs de données sont Game et User, les données partagées sont celles de firebase
 
-- Identifier les différentes pages de l'application. Décrire à l'aide d'une phrase le rôle de chacune d'entre elles.
+ Identifier les différentes pages de l'application. Décrire à l'aide d'une phrase le rôle de chacune d'entre elles.
 StartPage : Menu principal où l'on peut choisir entre créer une nouvelle partie ou en rejoindre une
 EndPage : Page de fin, affichage des vainqueurs
 CreatePage : Page de création de la partie où on peut ajouter et inviter nos amis, et lancer la partie.
@@ -218,12 +225,13 @@ AlivePage : Les personnes vivantes
 SpellPage : Page pour la sorcière, utilisation de ses potions
 DeadPage : Page qu'un joueur voit lorsqu'il meurt
 
-- Pourquoi voit-on sur plusieurs pages "Chargement du master game en cours" ?
+ Pourquoi voit-on sur plusieurs pages "Chargement du master game en cours" ?
 
 Parce qu'on l'affiche dans Game.js et dans GameMaster.js
 
-- Avec les classes, nous utilisions `withMyContext` pour s'inscrire aux données d'un provider. Identifier dans services/Game.js la fonction qui joue désormais ce rôle.
+ Avec les classes, nous utilisions `withMyContext` pour s'inscrire aux données d'un provider. Identifier dans services/Game.js la fonction qui joue désormais ce rôle.
 
+```javascript
   const {children} = props;
   return (
     <gameContext.Provider value={{game}}>
@@ -231,20 +239,21 @@ Parce qu'on l'affiche dans Game.js et dans GameMaster.js
     </gameContext.Provider>
   );
 };
+```
 
+ Dans `CodePage`, rappeler comment un formulaire gère les champs de remplissage des données.o
 
-- Dans `CodePage`, rappeler comment un formulaire gère les champs de remplissage des données.o
-
-
+```javascript
 onChange={e => setName(e.target.value)}
+```
 
 ### Reprise du design
 
-- En utilisant styled-components, reprendre le design du composant Button.
-- Votre nouveau bouton peut alors être utilisé pour améliorer l'affichage de la page `StartPage`.
-- Ajouter un header et un footer sur toutes les pages de l'application. 
-- Réaliser le design du formulaire de de `CodePage`, utilisé pour rejoindre l'application.
-- Faire de même avec `CreatePage`.
+ En utilisant styled-components, reprendre le design du composant Button.
+ Votre nouveau bouton peut alors être utilisé pour améliorer l'affichage de la page `StartPage`.
+ Ajouter un header et un footer sur toutes les pages de l'application. 
+ Réaliser le design du formulaire de de `CodePage`, utilisé pour rejoindre l'application.
+ Faire de même avec `CreatePage`.
 
 
 ### Utilisation de Firebase
