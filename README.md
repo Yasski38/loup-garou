@@ -102,8 +102,22 @@ Quelques petites questions :
 - Qu'est-ce que le CSS-in-JS ?
 Faire de la CSS directement dans du JS
 - Qu'est-ce que sont les tagged templates (délimitées par des backticks) ?
+Ils permettent de définir des règles d'interpolation de chaînes personnalisées pour pouvoir styliser nos composants
 - Donner un exemple d'un bouton personnalisé avec et sans les tagged templates ?
+
+sans tagged templates
+fn(['je suis blablablabla'])
+avec tagged templates
+fn`je suis blablablablabla`
+
+
+
+
+
+
+
 - Comment utilise-t-on les props dans cette librarie ?
+
 - Reprendre l'exemple du Material UI avec styled-components; l'écrire avec la composition et avec l'héritage.
 - Quelles sont les fonctions du contexte de styled-components ?
 
