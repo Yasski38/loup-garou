@@ -165,12 +165,78 @@ Activer l'authentification anonyme dans la console de Firebase.
 ### Découverte du code
 
 - Le code utilise des fonctions plutôt que des classes. Ecrire un bouton sous la forme d'une classe et d'une fonction. Retrouver les équivalences entre les méthodes des composants (telles que setState) et celles des fonctions ?
+
+Bouton sous la forme d'une fonction : 
+
+const Person = props => (
+  <div>
+    <button>Hello, {props.name}</button>
+  </div>
+);
+
+
+Bouton sous la forme d'une classe :
+
+class Person extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      myState: true;
+    }
+  }
+  
+  render() {
+    return (
+      <div>
+        <h1>Hello Person</h1>
+      </div>
+    );
+  }
+}
+export default Person;
+
+
+
 - Comment récupérer les props dans une fonction ?
+
+const blablabla = (props) => {
+
+
 - Dans `App.js`, identifier les différents producteurs de données. Retrouver leur définition. Quelles données partagent-ils à l'ensemble de l'application ?
+
+Les différents producteurs de données sont Game et User, les données partagées sont celles de firebase
+
 - Identifier les différentes pages de l'application. Décrire à l'aide d'une phrase le rôle de chacune d'entre elles.
+StartPage : Menu principal où l'on peut choisir entre créer une nouvelle partie ou en rejoindre une
+EndPage : Page de fin, affichage des vainqueurs
+CreatePage : Page de création de la partie où on peut ajouter et inviter nos amis, et lancer la partie.
+NightPage : Page de la nuit
+ResultPage : Page après la nuit affichant les morts
+CodePage : Page pour créer un code à envoyer à nos amis pour qu'ils rejoignent
+CastPage : Page pour voter contre les autres joueurs
+AlivePage : Les personnes vivantes
+SpellPage : Page pour la sorcière, utilisation de ses potions
+DeadPage : Page qu'un joueur voit lorsqu'il meurt
+
 - Pourquoi voit-on sur plusieurs pages "Chargement du master game en cours" ?
+
+Parce qu'on l'affiche dans Game.js et dans GameMaster.js
+
 - Avec les classes, nous utilisions `withMyContext` pour s'inscrire aux données d'un provider. Identifier dans services/Game.js la fonction qui joue désormais ce rôle.
+
+  const {children} = props;
+  return (
+    <gameContext.Provider value={{game}}>
+      {children}
+    </gameContext.Provider>
+  );
+};
+
+
 - Dans `CodePage`, rappeler comment un formulaire gère les champs de remplissage des données.o
+
+
+onChange={e => setName(e.target.value)}
 
 ### Reprise du design
 
