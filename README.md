@@ -144,6 +144,7 @@ const Button = styled.button`
 - Quelles sont les fonctions du contexte de styled-components ?
 
 Le contexte de styled components permet la gestion de thèmes. On peut d'ailleurs surcharger des thèmes avec d'autres thème au sein même de notre application
+Le contexte peut également servir à combiner les compo react classiques avec styled components
 
 ## Mise en place du design
 
