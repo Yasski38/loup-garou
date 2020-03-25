@@ -13,11 +13,26 @@ import DeadPage from './pages/DeadPage'
 import { MasterGameProvider } from './services/MasterGame';
 import { GameProvider } from './services/Game';
 import { UserProvider } from './services/User';
+import Header from './components/Header';
+import Logo from './components/Header';
+import Title from './components/Header';
+import Footer from './components/Footer';
+import logo from './logo.png'
+
+
 
 
 function App() {
   return (
     <BrowserRouter>
+    <Header>
+    <Logo> <img src={logo} alt="Logo" />
+    </Logo>
+    <Title>
+    Bienvenue sur Wolfy
+    </Title>
+    </Header>
+    
     <UserProvider>
       <Route exact path="/" component={ StartPage } />
       <Route path="/end" component={ EndPage } />
@@ -28,6 +43,7 @@ function App() {
         <Route path="/night" component={ NightPage } />
         <Route path="/vote/results" component={ ResultsPage } />
       </MasterGameProvider>
+      
 
       <GameProvider>
         <Route path="/vote/cast" component={ CastPage } />
@@ -36,7 +52,11 @@ function App() {
         <Route path="/spell" component={ SpellPage } />
       </GameProvider>
     </UserProvider>
+
+    <Footer>
+    </Footer>
     </BrowserRouter>
+    
   );
 }
 
