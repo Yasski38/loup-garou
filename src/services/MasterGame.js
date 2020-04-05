@@ -3,7 +3,6 @@ import firebase from './Firebase';
 import {useSession} from './User';
 
 
-
 const generateCode = () => {
     const random = Math.abs(Math.floor((Math.sin(Date.now()) * 1000)));
     return random;

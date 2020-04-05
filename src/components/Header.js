@@ -1,31 +1,29 @@
-import React from 'react';
-import styled from 'styled-components'
+import React from 'react'
+import styled from "styled-components";
+import Button from "./Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWolfPackBattalion } from '@fortawesome/free-brands-svg-icons'
 
-
-const Header = styled.div`
-    overflow: hidden;
-  background-color: red;
-  padding: 10px;  10px;
+const HeaderContainer = styled.header`
+  width: 100%;
+  padding: 30px;
+  color: #fff;
+  background-color: ${props => props.theme.main};
 `
+HeaderContainer.defaultProps = {
+  theme: {
+    main: "#FF6766",
+    mainLighter: "#FF6766"
+  }
+}
+
+const Header = () => {
+  return (
+      <HeaderContainer>
+        <FontAwesomeIcon icon={ faWolfPackBattalion } /> Loup Garou de Yasski
+      </HeaderContainer>
+  )
+}
 
 
-const Logo = styled.img`
-    width:25px
-`
-
-
-
-
-
-
-
-const Title = styled.div`
-font-size:40px;
-
-`
-
-
-
-export default Header;
-
+export default Header
