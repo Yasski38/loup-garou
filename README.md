@@ -231,21 +231,11 @@ Parce qu'on l'affiche dans Game.js et dans GameMaster.js
 
  Avec les classes, nous utilisions `withMyContext` pour s'inscrire aux données d'un provider. Identifier dans services/Game.js la fonction qui joue désormais ce rôle.
 
-```javascript
-  const {children} = props;
-  return (
-    <gameContext.Provider value={{game}}>
-      {children}
-    </gameContext.Provider>
-  );
-};
-```
+useGame
 
  Dans `CodePage`, rappeler comment un formulaire gère les champs de remplissage des données.o
 
-```javascript
-onChange={e => setName(e.target.value)}
-```
+On stocke la valeur dans le state à chaque modification du champs et au moment du submit on récupère la valeur du state.
 
 ### Reprise du design
 
@@ -259,11 +249,31 @@ onChange={e => setName(e.target.value)}
 ### Utilisation de Firebase
 
 - Dans 'User.js', comment fait-on pour garder une trace persistente de l'application, même lorsqu'on rafraichit la page ? Comment reconnait-on l'utilisateur lorsqu'il revient dans l'application ?
+
+On utilise Auth de FireBase: pour garder en mémoire l'utilisateur connecté avec l'aide des cookies. Ensuite la fonction useSession() renvoi un contexte qui renseigne  l'utilisateur de l'objet connecté à Firebase. Firebase s'occupe lui même de la persistence de l'application
+
+
 - Dans Firebase, nous ne pouvons pas ajouter des champs à un utilisateur. Par conséquent, nous devons créer une collection d'utilisateurs et synchroniser les utilisateurs avec cette table. Expliquer où est-ce que cette synchronisation a lieu.
+
+Cette synchronisation se déroule dans useUser
+On associe l'id unique utilisateur à l'objet utilisateur qui s'est connecté.
+
 - A votre avis, à quoi sert useEffect ?
+UseEffect permet une execution asynchrone. Cela permet d'effectuer les actions de Firebase qui prennent du temps sans qu'elles bloquent le rendu des components. L'utilisateur verra donc l'interface dès le début et ensuite cette interface va se remplir au fur et à mesure que les actions firebase s'enchainent.
+
 - A quoi sert la fonction `unsubscribe` utilisée dans les `useEffect` de `User.js` ?
+Désactivation des mises à jour firebase
 - Décrire les trois valeurs de retour de `UseUser`.
+
+error: indication d'erreur
+loading: indication du chargement des informations
+user: objet user
+
 - Combien de collections dans Firebase pouvez-vous identifier ? A quoi correspondent les `doc` ?
+
+2 collections: 
+- les utilisateurs dans 'users' 
+- les parties dans 'game'
 
 ### Contribuer à l'application
 
